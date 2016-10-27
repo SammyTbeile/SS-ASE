@@ -1,15 +1,14 @@
 from fabric.api import local
 
 def server():
-    local("python run.py")
+    local("python ./ss-ase/run.py")
 
 def serve():
-    local("python run.py")
+    server()
 
 def s():
-    local("python run.py")
+    server()
 
 def build():
     local("pip install -r requirements.txt")
-    local("python run.py")
-    
+    server()
