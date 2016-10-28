@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Feed</title>
+	</head>
+	<body>
+		<h1>Feed</h1>
+		<p>View Listings or Create Your Own</p>
+		<a href="/list"><button>Create a Listing</button></a>
+
+		{% if listings|length > 0 %}
+			<ul>
+			{% for list in listings %}
+				<li>
+					<h2>{{ list.title }}</h2>
+					<h3>{{ list.size }}</h3>
+					<h4>{{ list.price }}</h4>
+					<h5>{{ list.condition }}</h5>
+				</li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>No listings yet.</p>
+	</body>
+</html>

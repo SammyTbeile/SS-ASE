@@ -12,3 +12,17 @@ class User(db.Document):
         return False
     def get_id(self):
         return self.name
+
+class Listing(db.Document):
+	title = db.StringField(required=True, unique=True)
+	size = db.StringField(required=True)
+	price = db.StringField(required=True)
+	condition = db.StringField(required=True)
+	def get_title(self):
+		return self.title
+	def get_size(self):
+		return self.size
+	def get_price(self):
+		return self.price
+	def get_condition:
+		return self.condition
