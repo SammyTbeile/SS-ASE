@@ -1,5 +1,6 @@
-from flask.ext.mongoengine.wtf import model_form
+from app import db
 
+'''
 class User(db.Document):
     name = db.StringField(required=True, unique=True)
     password = db.StringField(required=True)
@@ -12,6 +13,7 @@ class User(db.Document):
         return False
     def get_id(self):
         return self.name
+'''
 
 class Listing(db.Document):
 	title = db.StringField(required=True, unique=True)
@@ -24,5 +26,5 @@ class Listing(db.Document):
 		return self.size
 	def get_price(self):
 		return self.price
-	def get_condition:
+	def get_condition(self):
 		return self.condition
