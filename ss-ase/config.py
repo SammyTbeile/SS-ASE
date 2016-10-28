@@ -1,6 +1,9 @@
 DEBUG = True
 
-MONGO_HOST= 'mongodb://heroku_w706pbw2:ddv4n0sqespgj240bkqhnovmek@ds019980.mlab.com:19980/heroku_w706pbw2'
+MONGODB_SETTINGS={
+    'db': 'development'#,
+    #'host': 'mongodb://heroku_w706pbw2:ddv4n0sqespgj240bkqhnovmek@ds019980.mlab.com:19980/heroku_w706pbw2'
+}
 
 THREADS_PER_PAGE = 2
 
