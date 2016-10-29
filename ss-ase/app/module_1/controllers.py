@@ -21,6 +21,7 @@ def list():
 	else:
 		return render_template("listing.html")
 
-@module_1.route("listing/<id>")
-def listing(id):
-	return render_template("see_listing.html", id=id)
+@module_1.route("listing/<title>")
+def listing(title):
+	item = Listing.objects(title=title)
+	return render_template("see_listing.html", title=title, size=item[0].size, price=item[0].price, condition=item[0].condition)
