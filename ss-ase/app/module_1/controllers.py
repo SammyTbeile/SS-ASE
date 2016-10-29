@@ -1,15 +1,26 @@
-from flask import render_template, Blueprint
-from app.module_1.models import Listing
+from flask import Blueprint, render_template, request
+from .models import Listing
 
+module_1 = Blueprint('start', __name__, url_prefix='/')
 
-module_1 = Blueprint('feed', __name__, url_prefix='/feed')
+@module_1.route("")
+def welcome():
+	return render_template("index.html")
 
-
-@module_1.route("/feed")
+@module_1.route("feed")
 def feed():
 	listings = Listing.objects()
 	return render_template("feed.html", listings=listings)
 
-@module_1.route("/list")
+@module_1.route("list", methods=["GET", "POST"])
 def list():
-	return render_template("listing.html")
+	if request.method == "POST":
+		new_list = Listing(title=request.form["list_title"], size=request.form["list_size"], price=request.form["list_price"], condition=request.form["list_condition"]);
+		new_list.save()
+		return render_template("confirm.html", title=request.form["list_title"])
+	else:
+		return render_template("listing.html")
+
+@module_1.route("listing/<id>")
+def listing(id):
+	return render_template("see_listing.html", id=id)
