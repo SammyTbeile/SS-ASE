@@ -1,0 +1,20 @@
+{% block title %}Login {% endblock %}
+{% block body %}
+<h2>Login</h2>
+
+<form action="" method="POST">
+  {{ form.csrf_token }}
+  <div>
+    {{ form.username.label }}
+    {{ form.username }}
+  </div>
+</br>
+  <div>
+    {{ form.password.label }}
+    {{ form.password }}
+  </div>
+</br>
+  <input type="submit" value="Login">
+  <input type="button" value="Register New User" onclick="location.href='/login/register';">
+</form>
+{% endblock %}
