@@ -11,7 +11,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
-# Import a module / component using its blueprint handler variable (mod_auth)
+# Import a module / component using its blueprint handler variable (login_auth)
 from app.login.controllers import login_auth as auth_login
 
 # Register blueprint(s)
