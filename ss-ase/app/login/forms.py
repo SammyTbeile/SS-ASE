@@ -1,4 +1,6 @@
-from wtforms import Form, StringField, PasswordField, validators
+from flask.ext.wtf import Form
+from wtforms import StringField, PasswordField, validators
+from wtforms.validators import Required, EqualTo, DataRequired
 
 class RegistrationForm(Form):
     username = StringField('Username')
@@ -14,5 +16,5 @@ class RegistrationForm(Form):
 
 
 class LoginForm(Form):
-    username = StringField('Username')
-    password = PasswordField('Password')
+    username = StringField('Username', [Required(message='Forgot your username?')])
+    password = PasswordField('Password', [Required(message='Must provide a password')])
