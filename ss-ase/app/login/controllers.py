@@ -24,7 +24,7 @@ def signin():
             login_user(user)
             session['Username'] = user.username
 
-            return redirect('/')
+            return redirect('/feed')
 
     return render_template("login/signin.html", form=form)
 
