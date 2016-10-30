@@ -1,6 +1,7 @@
 from flask.ext.wtf import Form
 from wtforms import StringField, PasswordField, validators
 from wtforms.validators import Required, EqualTo, DataRequired
+#from flask.ext.mongoengine.wtf import model_form
 
 class RegistrationForm(Form):
     username = StringField('Username')

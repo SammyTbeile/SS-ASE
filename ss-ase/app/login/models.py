@@ -11,6 +11,7 @@ class User (db.Document):
     phone = db.StringField(required=True, unique=True)
     dorm_building = db.StringField(required=True)
     email = db.StringField(required=True, unique=True)
+    confirm = db.StringField(required=True)
     # list field - hold users lstings
     def is_authenticated(self):
         users = User.object(username=self.username, password=self.password)
