@@ -7,9 +7,11 @@
 </head>
 	<body>
 		<h1>{{ title }}</h1>
-		<h2>{{ size }}</h2>
-		<h3>{{ price }}</h3>
-		<h4>{{ condition }}</h4>
+		<p>Size: {{ size }}</p>
+		<p>Price per Day: ${{ price }}</p>
+		{% if info %}
+			<p>Description: {{ info }}</p>
+		{% endif %}
 	
 		<a href="/feed"><button>Back To Feed</button></a>
 	</body>
