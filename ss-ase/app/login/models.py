@@ -1,5 +1,5 @@
 
-from app import db
+from app import db, login_manager
 
 class User (db.Document):
 
@@ -19,4 +19,12 @@ class User (db.Document):
     def is_anonymous(self):
         return False
     def get_id(self):
-        return self.name
+        return self.username
+
+    @login_manager.user_loader
+    def load_user(username):
+      users = User.objects(username=username)
+      if len(users) != 0:
+        return users[0]
+      else:
+        return None
