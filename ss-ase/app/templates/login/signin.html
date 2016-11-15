@@ -1,6 +1,19 @@
-{% block title %}Login {% endblock %}
+{% block title %}<h2>Login</h2>{% endblock %}
 {% block body %}
-<h2>Login</h2>
+
+{% if error %}
+  <p><strong>Error:</strong> {{ error }}
+{% endif %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 
 <form action="" method="POST">
   {{ form.csrf_token }}
