@@ -6,7 +6,10 @@ import tempfile
 class LoginTestCase(unittest.TestCase):
 
     def setUp(self):
+        app.testing = True
+        self.app = app.test_client()
         '''
+
         self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()
         app.config['TESTING'] = True
         self.app = app.test_client()
@@ -20,12 +23,14 @@ class LoginTestCase(unittest.TestCase):
         app.config['MONGODB_SETTINGS'] = {
             'db': 'testing'
         }
-        '''
+
+        app.config['CSRF_ENABLED']= False
         #app.config['TESTING'] = True
         self.app = app.test_client()
 
-    #def tearDown(self):
+     def tearDown(self):
         #db.users.remove()
+    '''
 
     def login(self, username, password):
         return self.app.post('/login/signin/', data=dict(
@@ -67,13 +72,13 @@ class LoginTestCase(unittest.TestCase):
         rv2 = self.login('a', 'a')
         assert 'Feed' in str(rv.data)
 
-
+    '''
     def test_login(self):
         print("testing login")
         rv = self.login('a', 'a')
-        print(rv)
+        print(rv.status)
         assert 'Feed' in str(rv.data)
-    '''
+
 
 if __name__ == '__main__':
     unittest.main()
