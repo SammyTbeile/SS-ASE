@@ -6,12 +6,41 @@
 	</head>
 	<body>
 		<h1>Create a Listing</h1>
-		<form action="/list" method="post">
-			<input type="text" placeholder="Title" name="list_title" required/><br>
-			<input type="text" placeholder="Size" name="list_size" required/><br>
-			<input type="text" placeholder="Price" name="list_price" required/><br>
-			<input type="text" placeholder="Condition" name="list_condition" required/><br>
+		
+		{% if error %}
+			{% if error==1 %}
+				<h2 style="color:red;">Please fill all required fields.</h2></p>
+			{% endif %}
+			{% if error==2 %}
+				<h2 style="color:red;">Please make sure price is a number.</h2>
+			{% endif %}
+			{% if error==3 %}
+				<h2 style="color:red;">Title "{{ title }}" taken. Please rename your item.</h2>
+			{% endif %}
+			{% if error==4 %}
+				<h2 style="color:red;">Please upload a .jpg file.</h2>
+			{% endif %}
+			{% if error==5 %}
+				<h2 style="color:red;">Photo name exists in database. Please rename photo.</h2>
+			{% endif %}
+		{% endif %}
+
+		<form action="/list" method="post" enctype = "multipart/form-data">
+			<p>*Title: <input type="text" name="list_title" required/></p>
+		
+			<p>*Photo (.jpg): <input type="file" name="file" required/></p>
+
+			<p>*Size: <select name="list_size">
+				<option value="XS">XS</option>
+				<option value="S">S</option>
+				<option value="M">M</option>
+				<option value="L">L</option>
+				<option value="XL">XL</option>
+			</select></p>
+			<p>*Price per Day (in $): <input type="text" name="list_price" required/></p>
+			<p>Other Info (optional): <input type="text" placeholder="Brand, Cleaning instructions, Visible stains/rips, etc..." name="list_info" required/><br>
 			<button type="submit">Create</button>
 		</form>
+		<a href="/feed"><button>Back to Feed</button></a>
 	</body>
 </html> 

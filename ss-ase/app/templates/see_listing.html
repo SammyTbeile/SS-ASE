@@ -6,10 +6,13 @@
 	<title>Listing</title>
 </head>
 	<body>
-		<h1>{{ title }}</h1>
-		<h2>{{ size }}</h2>
-		<h3>{{ price }}</h3>
-		<h4>{{ condition }}</h4>
+		<h1>{{ item.title }}</h1>
+		<p>Size: {{ item.size }}</p>
+		<p>Price per Day: ${{ item.price }}</p>
+		{% if info %}
+			<p>Description: {{ item.info }}</p>
+		{% endif %}
+		<img src= "{{url_for('static', filename=item.filename)}}"></br>
 	
 		<a href="/feed"><button>Back To Feed</button></a>
 	</body>
