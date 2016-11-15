@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, send_from_directory
+from flask_login import login_required
 from .models import Listing
 import os
 
@@ -13,11 +14,13 @@ def welcome():
 	return render_template("index.html")
 
 @feed_module.route("feed")
+@login_required
 def feed():
 	listings = Listing.objects()
 	return render_template("feed.html", listings=listings, display=send_image)
 
 @feed_module.route("list", methods=["GET", "POST"])
+@login_required
 def list():
 	if request.method == "POST":
 		error = 0
@@ -45,8 +48,8 @@ def list():
 		elif photo.filename in image_names:
 			error = 5 #jpg is not unique
 			return render_template("listing.html", error=error, title=title)
-		
-		else: 
+
+		else:
 			destination = "/".join([target, filename])
 			photo.save(destination)
 
@@ -58,6 +61,7 @@ def list():
 		return render_template("listing.html", error=error)
 
 @feed_module.route("listing/<title>")
+@login_required
 def listing(title):
 	item = Listing.objects(title=title)
 	return render_template("see_listing.html", item=item[0])
@@ -75,5 +79,3 @@ def isNumber(price):
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
-
-	
