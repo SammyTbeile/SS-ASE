@@ -1,36 +1,21 @@
+
 import os
-from app import app
+from app import app, db
+from app.login.models import User
 import unittest
 import tempfile
 
 class LoginTestCase(unittest.TestCase):
 
     def setUp(self):
-        app.testing = True
-        self.app = app.test_client()
-        '''
-
-        self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()
-        app.config['TESTING'] = True
-        self.app = app.test_client()
-        with app.app_context():
-            app.init_db()
-
-    def tearDown(self):
-        os.close(self.db_fd)
-        os.unlink(app.config['DATABASE'])
-
-        app.config['MONGODB_SETTINGS'] = {
+        app.config['TESTING']=True
+        app.config['WTF_CSRF_ENABLED']=False
+        app.config['MONGODB_SETTINGS']={
             'db': 'testing'
         }
-
-        app.config['CSRF_ENABLED']= False
-        #app.config['TESTING'] = True
         self.app = app.test_client()
-
-     def tearDown(self):
-        #db.users.remove()
-    '''
+    def tearDown(self):
+        User.objects().delete()
 
     def login(self, username, password):
         return self.app.post('/login/signin/', data=dict(
@@ -39,7 +24,7 @@ class LoginTestCase(unittest.TestCase):
         ), follow_redirects=True)
 
     def logout(self):
-        return self.app.get('/login/logout/', follow_redirects=True)
+        return self.app.get('/login/logout', follow_redirects=True)
 
     def register(self, username, name, email, dorm_building,
         phone, password, confirm):
@@ -56,7 +41,7 @@ class LoginTestCase(unittest.TestCase):
         print("testing that failed login returns the login page")
         rv = self.login('test', 'test')
         assert 'Login' in str(rv.data)
-    '''
+
     def test_register(self):
         print("testing registration")
         rv = self.register(
@@ -67,17 +52,20 @@ class LoginTestCase(unittest.TestCase):
             'a',
             'a',
             'a')
-        print(str(rv.data))
         assert 'Login' in str(rv.data)
-        rv2 = self.login('a', 'a')
-        assert 'Feed' in str(rv.data)
 
-    '''
+
     def test_login(self):
         print("testing login")
+        User(username='a', password='a', email='a@gmail.com', phone='a', name='a',dorm_building='a', confirm='a').save()
         rv = self.login('a', 'a')
-        print(rv.status)
         assert 'Feed' in str(rv.data)
+
+    def test_logout(self):
+        print("test logout")
+        rv = self.logout()
+        assert 'Login' in str(rv.data)
+
 
 
 if __name__ == '__main__':

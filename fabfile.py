@@ -12,3 +12,7 @@ def s():
 def build():
     local("pip install -r requirements.txt")
     server()
+
+def test():
+    local("python ./ss-ase/test_login.py")
+    local("python ./ss-ase/test_listing.py")
