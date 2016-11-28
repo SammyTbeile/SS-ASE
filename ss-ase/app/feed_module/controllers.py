@@ -7,7 +7,7 @@ feed_module = Blueprint('start', __name__, url_prefix='/')
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 target = os.path.join(APP_ROOT, "../static")
-ALLOWED_EXTENSIONS = set(['jpg'])
+ALLOWED_EXTENSIONS = set(['jpg', 'JPG'])
 PRICE_RANGE = [5, 100]
 low = PRICE_RANGE[0]
 high = PRICE_RANGE[1]
