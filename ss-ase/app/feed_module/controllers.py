@@ -8,6 +8,9 @@ feed_module = Blueprint('start', __name__, url_prefix='/')
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 target = os.path.join(APP_ROOT, "../static")
 ALLOWED_EXTENSIONS = set(['jpg'])
+PRICE_RANGE = [5, 100]
+low = PRICE_RANGE[0]
+high = PRICE_RANGE[1]
 
 @feed_module.route("")
 def welcome():
@@ -35,19 +38,19 @@ def list():
 
 		if not title or not size or not price or (filename == ""):
 			error = 1 #required fields are not filled
-			return render_template("listing.html", error=error)
-		elif not isNumber(price):
-			error = 2 #price is not a number
-			return render_template("listing.html", error=error)
+		elif not isNumber(price) or not isInRange(price, low, high):
+			error = 2 #price is not a number and/or not in range
+		elif not isWord(title):
+			error = 3 #title is garbage value
 		elif Listing.objects(title=title):
-			error = 3 #title is not unique
-			return render_template("listing.html", error=error, title=title)
+			error = 4 #title is not unique
 		elif not allowed_file(filename):
-			error = 4 #not a .jpg file
-			return render_template("listing.html", error=error, title=title)
+			error = 5 #not a .jpg file
 		elif photo.filename in image_names:
-			error = 5 #jpg is not unique
-			return render_template("listing.html", error=error, title=title)
+			error = 6 #jpg is not unique
+	
+		if error:
+			return render_template("listing.html", error=error, title=title, low=low, high=high)
 
 		else:
 			destination = "/".join([target, filename])
@@ -77,5 +80,16 @@ def isNumber(price):
 	except ValueError:
 		return False
 
+def isInRange(price, low, high):
+	price = float(price)
+	if (price >= low and price <= high):
+		return True
+	return False
+
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+def isWord(title):
+	if (any(x.isalpha() for x in title) and all(x.isalpha() or x.isspace() for x in title)):
+		return True
+	return False
