@@ -2,11 +2,18 @@ from flask import Blueprint, render_template, request, send_from_directory
 from flask_login import login_required
 from .models import Listing
 import os
+import boto3
+from boto.s3.key import Key
 
 feed_module = Blueprint('start', __name__, url_prefix='/')
 
-APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-target = os.path.join(APP_ROOT, "../static")
+AWS_ACCESS_KEY_ID = 'AKIAJWYMQFFTQNTCOGFQ'
+AWS_SECRET_ACCESS_KEY = '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'
+
+session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+s3 = session.resource('s3')
+s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+
 ALLOWED_EXTENSIONS = set(['jpg', 'JPG'])
 PRICE_RANGE = [5, 100]
 low = PRICE_RANGE[0]
@@ -20,7 +27,7 @@ def welcome():
 @login_required
 def feed():
 	listings = Listing.objects()
-	return render_template("feed.html", listings=listings, display=send_image)
+	return render_template("feed.html", listings=listings, s3=s3_client)
 
 @feed_module.route("list", methods=["GET", "POST"])
 @login_required
@@ -32,11 +39,9 @@ def list():
 		price = request.form["list_price"]
 		info = request.form["list_info"]
 		photo = request.files['file']
-		filename = photo.filename
+		filename = title + '.jpg'
 
-		image_names = os.listdir(target)
-
-		if not title or not size or not price or (filename == ""):
+		if not title or not size or not price or (photo.filename == ""):
 			error = 1 #required fields are not filled
 		elif not isNumber(price) or not isInRange(price, low, high):
 			error = 2 #price is not a number and/or not in range
@@ -44,18 +49,14 @@ def list():
 			error = 3 #title is garbage value
 		elif Listing.objects(title=title):
 			error = 4 #title is not unique
-		elif not allowed_file(filename):
+		elif not allowed_file(photo.filename):
 			error = 5 #not a .jpg file
-		elif photo.filename in image_names:
-			error = 6 #jpg is not unique
 	
 		if error:
 			return render_template("listing.html", error=error, title=title, low=low, high=high)
 
 		else:
-			destination = "/".join([target, filename])
-			photo.save(destination)
-
+			s3.Bucket('rags2riches').put_object(Key=filename, Body=photo)
 			new_list = Listing(title, size, price, info, filename)
 			new_list.save()
 			return render_template("confirm.html", title=title)
@@ -67,11 +68,7 @@ def list():
 @login_required
 def listing(title):
 	item = Listing.objects(title=title)
-	return render_template("see_listing.html", item=item[0])
-
-@feed_module.route("images/<filename>")
-def send_image(filename):
-	return send_from_directory("images", filename)
+	return render_template("see_listing.html", item=item[0], s3=s3_client)
 
 def isNumber(price):
 	try:
