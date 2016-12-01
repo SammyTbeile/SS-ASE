@@ -1,4 +1,4 @@
-{% block title %}<h2>Register</h2>{% endblock %}
+<!--{% block title %}<h2>Register</h2>{% endblock %}
 {% block body %}
 
 
@@ -42,4 +42,131 @@
 
   <input type="submit" value="Register">
 </form>
-{% endblock %}
+{% endblock %}-->
+
+
+<!DOCTYPE html>
+<html>
+<title>Register</title>
+<style>
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+button {
+    background-color: #337ab7;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.buttonRegister {
+    background-color: #337ab7;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+<body>
+
+<h2><center>Register</center></h2>
+
+<form action="" method="POST">
+  {{ form.csrf_token }}
+  <!--<div class="imgcontainer">
+    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+  </div>-->
+
+  <div class="container">
+    <label><b>{{ form.name.label }}</b></label>
+	{{ form.name }}
+
+    <label><b>{{ form.email.label }}</b></label>
+	{{ form.email }}
+        
+    <label><b>{{ form.phone.label }}</b></label>
+	{{ form.phone }}
+    
+    <label><b>{{ form.dorm_building.label }}</b></label>
+	{{ form.dorm_building }}
+
+    <label><b>{{ form.username.label }}</b></label>
+	{{ form.username }}
+
+    <label><b>{{ form.password.label }}</b></label>
+	{{ form.password }}
+
+    <label><b>{{ form.confirm.label }}</b></label>
+	{{ form.confirm }}
+	
+	<input type="submit" class="buttonRegister" value="Register">
+
+	<!--<input type="submit" value="Register">-->
+    <input type="checkbox" checked="checked"> Remember me
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn"><a href="/login/signin">Cancel</a></button>
+    <!--<span class="psw">Forgot <a href="#">password?</a></span>-->
+  </div>
+</form>
+
+</body>
+</html>
+

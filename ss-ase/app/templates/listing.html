@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -43,4 +43,132 @@
 		</form>
 		<a href="/feed"><button>Back to Feed</button></a>
 	</body>
-</html> 
+</html>--> 
+
+<!DOCTYPE html>
+<html>
+<style>
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #337ab7;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+<body>
+
+<h2>Create a Listing</h2>
+
+{% if error %}
+	{% if error==1 %}
+		<h2 style="color:red;">Please fill all required fields.</h2>
+	{% endif %}
+	{% if error==2 %}
+		<h2 style="color:red;">Please make sure price is a number.</h2>
+	{% endif %}
+	{% if error==3 %}
+		<h2 style="color:red;">Title "{{ title }} is taken. Please rename your item.</h2>
+	{% endif %}
+	{% if error==4 %}
+		<h2 style="color:red;">Please upload a .jpg file.</h2>
+	{% endif %}
+	{% if error==5 %}
+		<h2 style="color:red;">Photo name exists in database. Please rename photo.</h2>
+	{% endif %}
+{% endif %}
+
+<form action="/list" method="post" enctype="multipart/form-data">
+
+  <div class="container">
+
+			<p><b>*Title: <input type="text" name="list_title" required/></b></p>
+		
+			<p><b>*Photo (.jpg): <input type="file" name="file" required/></b></p>
+
+			<p><b>*Size: <select name="list_size">
+				<option value="XS">XS</option>
+				<option value="S">S</option>
+				<option value="M">M</option>
+				<option value="L">L</option>
+				<option value="XL">XL</option>
+			</select></b></p>
+			<p><b>*Price per Day (in $): <input type="text" name="list_price" required/></b></p>
+			<p>Other Info (optional): <input type="text" placeholder="Brand, Cleaning instructions, Visible stains/rips, etc..." name="list_info" required/><br>
+			<button type="submit">Create</button>
+		</form>
+		<!--<a href="/feed"><button>Back to Feed</button></a>-->
+    <!--<label><b></b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+        
+    <button type="submit">Login</button>
+    <input type="checkbox" checked="checked"> Remember me-->
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn"><a href="/feed">Cancel</a></button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+
+</body>
+</html>
