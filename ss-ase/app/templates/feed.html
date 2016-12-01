@@ -1,29 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Feed</title>
-	</head>
-	<body>
-		<h1>Feed</h1>
-		<p>View Listings or Create Your Own</p>
-		<a href="list"><button>Create a Listing</button></a>
+<head>
+  <title>Feed</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+	
+	.panel-heading > a {
+		color: #fff;
+	}
 
-		{% if listings|length > 0 %}
-			<ul>
-			{% for list in listings %}
-				<li>
-					<h2><a href="/listing/{{ list.title }}">{{ list.title }}</a></h2>
-					<h3>{{ list.size }}</h3>
-					<h4>${{ list.price }}</h4>
+  </style>
+</head>
+<body>
 
-					<img src= "{{ s3.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'rags2riches','Key':list.filename}) }}">
-				</li>
-			{% endfor %}
-			</ul>
-		{% else %}
-			<p>No listings yet.</p>
-		{% endif %}
-		<input type="button" value="Logout" onclick="location.href='/login/logout';">
-	</body>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Rags 2 Riches</h1>      
+    <p>Upgrade your closet through other students on campus.</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="feed">R2R</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="feed">Feed</a></li>
+        <li><a href="/list">Create a Listing</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/login/logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+
+{% if listings|length > 0 %}
+	{% for list in listings %}
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><a href=/listing/{{list.title}}>{{ list.title  }}</a></div>
+        <img src= "{{ s3.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'rags2riches','Key':list.filename}) }}">
+        <div class="panel-footer" href=/listing/{{list.size}}>Size: {{ list.size  }}</div>
+        <div class="panel-footer" href=/listing/{{list.price}}>Price: ${{ list.price  }}</div>
+      </div>
+    </div>
+	{% endfor %}
+{% else %}
+	<p>No listings yet.</p>
+{% endif %}
+  </div>
+</div><br><br>
+<footer class="container-fluid text-center">
+  <p>Online Store Copyright</p>
+  <!--<form class="form-inline">Get deals:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Sign Up</button>
+  </form>-->
+</footer>
+
+</body>
 </html>
