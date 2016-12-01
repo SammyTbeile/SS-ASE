@@ -1,11 +1,6 @@
 {% block title %}<h2>Register for a Rags2Riches Account</h2>{% endblock %}
 {% block body %}
 
-{% if error %}
-  <h2 style="color:red;"> {{ error }} </h2>
-{% endif %}
-
-
 <form action="" method="POST">
   {{ form.csrf_token }}
   <div>
@@ -50,6 +45,9 @@
     {% for error in form.username.errors %}
       <h5 style="color:red;"> {{ error }} </h5>
     {% endfor %}
+    {% if error %}
+      <h5 style="color:red;"> {{ error }} </h5>
+    {% endif %}
 
     {{ form.username.label }}*
     {{ form.username }}
