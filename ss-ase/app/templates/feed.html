@@ -1,33 +1,3 @@
-<!--<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Feed</title>
-	</head>
-	<body>
-		<h1>Feed</h1>
-		<p>View Listings or Create Your Own</p>
-		<a href="list"><button>Create a Listing</button></a>
-
-		{% if listings|length > 0 %}
-			<ul>
-			{% for list in listings %}
-				<li>
-					<h2><a href="/listing/{{ list.title }}">{{ list.title }}</a></h2>
-					<h3>{{ list.size }}</h3>
-					<h4>{{ list.price }}</h4>
-					<img src= "{{url_for('static', filename=list.filename)}}">
-				</li>
-			{% endfor %}
-			</ul>
-		{% else %}
-			<p>No listings yet.</p>
-		{% endif %}
-		<input type="button" value="Logout" onclick="location.href='/login/logout';">
-	</body>
-</html>
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +62,7 @@
   </div>
 </nav>
 
-<div class="container">    
+<div class="container">
   <div class="row">
 
 {% if listings|length > 0 %}
@@ -100,7 +70,7 @@
     <div class="col-sm-4">
       <div class="panel panel-primary">
         <div class="panel-heading"><a href=/listing/{{list.title}}>{{ list.title  }}</a></div>
-        <div class="panel-body"><img src="{{url_for('static', filename=list.filename)}}" class="img-responsive" style="width:100%" alt="Image"></div>
+        <img src= "{{ s3.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'rags2riches','Key':list.filename}) }}">
         <div class="panel-footer" href=/listing/{{list.size}}>Size: {{ list.size  }}</div>
         <div class="panel-footer" href=/listing/{{list.price}}>Price: ${{ list.price  }}</div>
       </div>
@@ -112,7 +82,7 @@
   </div>
 </div><br><br>
 <footer class="container-fluid text-center">
-  <p>Online Store Copyright</p>  
+  <p>Online Store Copyright</p>
   <!--<form class="form-inline">Get deals:
     <input type="email" class="form-control" size="50" placeholder="Email Address">
     <button type="button" class="btn btn-danger">Sign Up</button>

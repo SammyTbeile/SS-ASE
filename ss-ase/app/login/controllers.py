@@ -2,7 +2,7 @@
 from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for, abort
 from flask_login import LoginManager, login_user, logout_user
 from werkzeug import check_password_hash, generate_password_hash
-from mongoengine import DoesNotExist, NotUniqueError
+from mongoengine import DoesNotExist, NotUniqueError, ValidationError
 from app import db, login_manager
 from app.login.forms import LoginForm, RegistrationForm
 from app.login.models import User
@@ -21,8 +21,11 @@ def signin():
                 user.authenticated = True
                 return redirect('/feed')
         except DoesNotExist:
-            #flash("Invalid username or password")
-            error = 'Invalid credentials'
+            error = 'Invalid Username or Password'
+            return render_template("login/signin.html", form=form, error=error)
+        except ValidationError:
+            error = 'Invalid Username or Password - does not exist'
+            return render_template("login/signin.html", form=form, error=error)
 
     return render_template('login/signin.html', form=form)
 
@@ -31,16 +34,22 @@ def signin():
 def register():
 
     form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate_on_submit():
+    if request.method == 'POST':
+
+        if( not form.validate_on_submit()):
+            error = 'Invalid registration: See marked fields below'
+            return render_template("login/register.html", form=form, error=error)
+
         try:
+            username = User(username= form.username.data)
             user = User(username= form.username.data, name=form.name.data, email=form.email.data, dorm_building=form.dorm_building.data, phone=form.phone.data, password=form.password.data, confirm=form.confirm.data)
             user.save()
+
         except NotUniqueError:
-            error = 'Invalid registration'
-            return render_template("login/register.html", form=form)
+            error = 'Username is not unique: please try another username'
+            return render_template("login/register.html", form=form, error=error)
 
         return redirect("login/signin")
-
     return render_template("login/register.html", form=form)
 
 @login_auth.route("/logout")

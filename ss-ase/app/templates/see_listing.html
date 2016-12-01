@@ -12,7 +12,9 @@
 		{% if info %}
 			<p>Description: {{ item.info }}</p>
 		{% endif %}
-		<img src= "{{url_for('static', filename=item.filename)}}"></br>
+		
+		<img src= "{{ s3.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'rags2riches','Key':item.filename}) }}">
+		<!--<img src= "{{url_for('static', filename=item.filename)}}"></br>-->
 	
 		<a href="/feed"><button>Back To Feed</button></a>
 	</body>

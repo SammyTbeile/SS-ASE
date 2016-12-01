@@ -1,53 +1,6 @@
-<!--{% block title %}<h2>Register</h2>{% endblock %}
-{% block body %}
-
-
-<form action="" method="POST">
-  {{ form.csrf_token }}
-  <div>
-    {{ form.name.label }}
-    {{ form.name }}
-  </div>
-</br>
-<div>
-  {{ form.email.label }}
-  {{ form.email }}
-</div>
-</br>
-<div>
-  {{ form.phone.label }}
-  {{ form.phone }}
-</div>
-</br>
-<div>
-  {{ form.dorm_building.label }}
-  {{ form.dorm_building }}
-</div>
-</br>
-  <div>
-    {{ form.username.label }}
-    {{ form.username }}
-  </div>
-</br>
-  <div>
-    {{ form.password.label }}
-    {{ form.password }}
-  </div>
-</br>
-  <div>
-    {{ form.confirm.label }}
-    {{ form.confirm }}
-  </div>
-</br>
-
-  <input type="submit" value="Register">
-</form>
-{% endblock %}-->
-
-
-<!DOCTYPE html>
-<html>
-<title>Register</title>
+<!-- <!DOCTYPE html>
+<html> -->
+{% block title %}<h2><center>Register for a Rags2Riches Account</center></h2>{% endblock %}
 <style>
 form {
     border: 3px solid #f1f1f1;
@@ -123,50 +76,92 @@ span.psw {
     }
 }
 </style>
-<body>
 
-<h2><center>Register</center></h2>
+
+{% block body %}
 
 <form action="" method="POST">
   {{ form.csrf_token }}
-  <!--<div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>-->
-
   <div class="container">
-    <label><b>{{ form.name.label }}</b></label>
-	{{ form.name }}
+    <div>
+      {% for error in form.name.errors %}
+        <h5 style="color:red;"> {{ error }} </h5>
+      {% endfor %}
+
+      <label><b>{{ form.name.label }}</b></label>
+      {{ form.name }}
+    </div>
+  </br>
+  <div>
+    {% for error in form.email.errors %}
+      <h5 style="color:red;"> {{ error }} </h5>
+    {% endfor %}
 
     <label><b>{{ form.email.label }}</b></label>
-	{{ form.email }}
-        
-    <label><b>{{ form.phone.label }}</b></label>
-	{{ form.phone }}
-    
+    {{ form.email }}
+
+  </div>
+  </br>
+  <div>
+    {% for error in form.phone.errors %}
+      <h5 style="color:red;"> {{ error }} </h5>
+    {% endfor %}
+
+    <label><b>{{ form.phone.label }}</label></b>
+    (example: 1234567890)
+    {{ form.phone }}
+  </div>
+  </br>
+  <div>
+    {% for error in form.dorm_building.errors %}
+      <h5 style="color:red;"> {{ error }} </h5>
+    {% endfor %}
+
     <label><b>{{ form.dorm_building.label }}</b></label>
-	{{ form.dorm_building }}
+    {{ form.dorm_building }}
+  </div>
+  </br>
+    <div>
+      {% for error in form.username.errors %}
+        <h5 style="color:red;"> {{ error }} </h5>
+      {% endfor %}
+      {% if error %}
+        <h5 style="color:red;"> {{ error }} </h5>
+      {% endif %}
 
-    <label><b>{{ form.username.label }}</b></label>
-	{{ form.username }}
+      <label><b>{{ form.username.label }}</b></label>
+      {{ form.username }}
+    </div>
+  </br>
+    <div>
+      {% for error in form.password.errors %}
+        <h5 style="color:red;"> {{ error }} </h5>
+      {% endfor %}
 
-    <label><b>{{ form.password.label }}</b></label>
-	{{ form.password }}
+      <label><b>{{ form.password.label }}</b></label>
+      {{ form.password }}
+    </div>
+  </br>
+    <div>
+      {% for error in form.confirm.errors %}
+        <h5 style="color:red;"> {{ error }} </h5>
+      {% endfor %}
 
-    <label><b>{{ form.confirm.label }}</b></label>
-	{{ form.confirm }}
-	
-	<input type="submit" class="buttonRegister" value="Register">
+      <label><b>{{ form.confirm.label }}</b></label>
+      {{ form.confirm }}
+    </div>
+  </br>
 
-	<!--<input type="submit" value="Register">-->
+    <input type="submit" class="buttonRegister" value="Register">
+    
     <input type="checkbox" checked="checked"> Remember me
   </div>
-
+  
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn"><a href="/login/signin">Cancel</a></button>
     <!--<span class="psw">Forgot <a href="#">password?</a></span>-->
   </div>
-</form>
+    
 
-</body>
-</html>
-
+  </form>
+{% endblock %}
