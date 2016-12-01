@@ -12,16 +12,16 @@
 				<h2 style="color:red;">Please fill all required fields.</h2></p>
 			{% endif %}
 			{% if error==2 %}
-				<h2 style="color:red;">Please make sure price is a number.</h2>
+				<h2 style="color:red;">Please make sure price is a number between {{low}} and {{high}}.</h2>
 			{% endif %}
 			{% if error==3 %}
-				<h2 style="color:red;">Title "{{ title }}" taken. Please rename your item.</h2>
+				<h2 style="color:red;">Titles may only be words and spaces (with at least 1 word).</h2>
 			{% endif %}
 			{% if error==4 %}
-				<h2 style="color:red;">Please upload a .jpg file.</h2>
+				<h2 style="color:red;">Title "{{ title }}" taken. Please rename your item.</h2>
 			{% endif %}
 			{% if error==5 %}
-				<h2 style="color:red;">Photo name exists in database. Please rename photo.</h2>
+				<h2 style="color:red;">Please upload a .jpg file.</h2>
 			{% endif %}
 		{% endif %}
 
@@ -38,9 +38,9 @@
 				<option value="XL">XL</option>
 			</select></p>
 			<p>*Price per Day (in $): <input type="text" name="list_price" required/></p>
-			<p>Other Info (optional): <input type="text" placeholder="Brand, Cleaning instructions, Visible stains/rips, etc..." name="list_info" required/><br>
+			<p>*Other Info: <input type="text" placeholder="Brand, Cleaning instructions, Visible stains/rips, etc..." name="list_info" required/><br>
 			<button type="submit">Create</button>
 		</form>
 		<a href="/feed"><button>Back to Feed</button></a>
 	</body>
-</html> 
+</html>
