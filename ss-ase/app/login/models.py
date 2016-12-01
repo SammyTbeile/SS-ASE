@@ -3,12 +3,12 @@ from app import db, login_manager
 
 class User (db.Document):
 
-    name = db.StringField(required=True, unique=True)
+    name = db.StringField(required=True, unique=False)
     username = db.StringField(required=True, unique=True)
     password = db.StringField(required=True)
-    phone = db.StringField(required=True, unique=True)
+    phone = db.IntField(required=True, unique=False)
     dorm_building = db.StringField(required=True)
-    email = db.StringField(required=True, unique=True)
+    email = db.StringField(required=True, unique=False)
     confirm = db.StringField(required=True)
 
     def is_authenticated(self):
