@@ -1,8 +1,8 @@
 DEBUG = True
 
 MONGODB_SETTINGS={
-    'db': 'development'#,
-    #'host': 'mongodb://heroku_w706pbw2:ddv4n0sqespgj240bkqhnovmek@ds019980.mlab.com:19980/heroku_w706pbw2'
+    'db': 'db',
+    'host': 'mongodb://rags2riches:Rn65uJ2K@ds115738.mlab.com:15738/development'
 }
 
 THREADS_PER_PAGE = 2
