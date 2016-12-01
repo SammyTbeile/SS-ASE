@@ -2,27 +2,25 @@
 {% block body %}
 
 {% if error %}
-  <p><strong>Error:</strong> {{ error }}
+  <h4 style="color:red;"> {{ error }} </h4>
 {% endif %}
-
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
 
 <form action="" method="POST">
   {{ form.csrf_token }}
   <div>
+    {% for error in form.username.errors %}
+      <h5 style="color:red;"> {{ error }} </h5>
+    {% endfor %}
+
     {{ form.username.label }}
     {{ form.username }}
   </div>
 </br>
   <div>
+    {% for error in form.password.errors %}
+      <h5 style="color:red;"> {{ error }} </h5>
+    {% endfor %}
+
     {{ form.password.label }}
     {{ form.password }}
   </div>

@@ -6,7 +6,7 @@ class User (db.Document):
     name = db.StringField(required=True, unique=True)
     username = db.StringField(required=True, unique=True)
     password = db.StringField(required=True)
-    phone = db.StringField(required=True, unique=True)
+    phone = db.IntField(required=True, unique=True)
     dorm_building = db.StringField(required=True)
     email = db.StringField(required=True, unique=True)
     confirm = db.StringField(required=True)
