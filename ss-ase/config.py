@@ -1,6 +1,6 @@
 DEBUG = True
 
-MONGODB_SETTINGS={
+MONGODB_SETTINGS = {
     'db': 'db',
     'host': 'mongodb://rags2riches:Rn65uJ2K@ds115738.mlab.com:15738/development'
 }
@@ -11,4 +11,4 @@ CSRF_ENABLED = True
 
 CSRF_SESSION_KEY = "y71nBTpXnOa8Fl21"
 
-SECRET_KEY= "L6c7rVO8GQqUKGxK"
+SECRET_KEY = "L6c7rVO8GQqUKGxK"

@@ -80,15 +80,20 @@ span.psw {
 
 {% block body %}
 
+
+
 <form action="" method="POST">
   {{ form.csrf_token }}
   <div class="container">
+    {% if error %}
+      <h4 style="color:red;"> {{ error }} </h4>
+    {% endif %}
     <div>
       {% for error in form.name.errors %}
         <h5 style="color:red;"> {{ error }} </h5>
       {% endfor %}
 
-      <label><b>{{ form.name.label }}</b></label>
+      <label><b>{{ form.name.label }}*</b></label>
       {{ form.name }}
     </div>
   </br>
@@ -97,7 +102,7 @@ span.psw {
       <h5 style="color:red;"> {{ error }} </h5>
     {% endfor %}
 
-    <label><b>{{ form.email.label }}</b></label>
+    <label><b>{{ form.email.label }}*</b></label>
     {{ form.email }}
 
   </div>
@@ -107,7 +112,7 @@ span.psw {
       <h5 style="color:red;"> {{ error }} </h5>
     {% endfor %}
 
-    <label><b>{{ form.phone.label }}</label></b>
+    <label><b>{{ form.phone.label }}*</label></b>
     (example: 1234567890)
     {{ form.phone }}
   </div>
@@ -117,7 +122,7 @@ span.psw {
       <h5 style="color:red;"> {{ error }} </h5>
     {% endfor %}
 
-    <label><b>{{ form.dorm_building.label }}</b></label>
+    <label><b>{{ form.dorm_building.label }}*</b></label>
     {{ form.dorm_building }}
   </div>
   </br>
@@ -125,11 +130,11 @@ span.psw {
       {% for error in form.username.errors %}
         <h5 style="color:red;"> {{ error }} </h5>
       {% endfor %}
-      {% if error %}
-        <h5 style="color:red;"> {{ error }} </h5>
+      {% if errorUsername %}
+        <h5 style="color:red;"> {{ errorUsername }} </h5>
       {% endif %}
 
-      <label><b>{{ form.username.label }}</b></label>
+      <label><b>{{ form.username.label }}*</b></label>
       {{ form.username }}
     </div>
   </br>
@@ -138,7 +143,7 @@ span.psw {
         <h5 style="color:red;"> {{ error }} </h5>
       {% endfor %}
 
-      <label><b>{{ form.password.label }}</b></label>
+      <label><b>{{ form.password.label }}*</b></label>
       {{ form.password }}
     </div>
   </br>
@@ -147,21 +152,21 @@ span.psw {
         <h5 style="color:red;"> {{ error }} </h5>
       {% endfor %}
 
-      <label><b>{{ form.confirm.label }}</b></label>
+      <label><b>{{ form.confirm.label }}*</b></label>
       {{ form.confirm }}
     </div>
   </br>
 
     <input type="submit" class="buttonRegister" value="Register">
-    
+
     <input type="checkbox" checked="checked"> Remember me
   </div>
-  
+
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn"><a href="/login/signin">Cancel</a></button>
     <!--<span class="psw">Forgot <a href="#">password?</a></span>-->
   </div>
-    
+
 
   </form>
 {% endblock %}
