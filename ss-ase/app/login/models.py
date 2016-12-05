@@ -1,7 +1,7 @@
 
 from app import db, login_manager
 
-class User (db.Document):
+class User(db.Document):
 
     name = db.StringField(required=True, unique=False)
     username = db.StringField(required=True, unique=True)
@@ -23,8 +23,8 @@ class User (db.Document):
 
     @login_manager.user_loader
     def load_user(username):
-      users = User.objects(username=username)
-      if len(users) != 0:
-        return users[0]
-      else:
-        return None
+        users = User.objects(username=username)
+        if len(users) != 0:
+            return users[0]
+        else:
+            return None
