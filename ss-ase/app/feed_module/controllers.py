@@ -1,7 +1,7 @@
 import boto3
 from boto.s3.key import Key
 from flask import Blueprint, render_template, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from .models import Listing
 
 feed_module = Blueprint('start', __name__, url_prefix='/')
@@ -39,6 +39,7 @@ def list():
         info = request.form["list_info"]
         photo = request.files['file']
         filename = title + '.jpg'
+        user = current_user.username
 
         if not title or not size or not price or (photo.filename == ""):
             error = 1 #required fields are not filled
@@ -55,7 +56,7 @@ def list():
 
         else:
             s3.Bucket('rags2riches').put_object(Key=filename, Body=photo)
-            new_list = Listing(title, size, price, info, filename)
+            new_list = Listing(title, size, price, info, filename, user)
             new_list.save()
             return render_template("confirm.html", title=title)
     else:

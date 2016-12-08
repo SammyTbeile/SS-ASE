@@ -8,23 +8,23 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
-    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
     .navbar {
       margin-bottom: 50px;
       border-radius: 0;
     }
-    
-    /* Remove the jumbotron's default bottom margin */ 
+
+    /* Remove the jumbotron's default bottom margin */
      .jumbotron {
       margin-bottom: 0;
     }
-   
+
     /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;
       padding: 25px;
     }
-	
+
 	.panel-heading > a {
 		color: #fff;
 	}
@@ -35,7 +35,7 @@
 
 <div class="jumbotron">
   <div class="container text-center">
-    <h1>Rags 2 Riches</h1>      
+    <h1>Rags 2 Riches</h1>
     <p>Upgrade your closet through other students on campus.</p>
   </div>
 </div>
@@ -46,7 +46,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="feed">R2R</a>
     </div>
@@ -73,6 +73,8 @@
         <img src= "{{ s3.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'rags2riches','Key':list.filename}) }}">
         <div class="panel-footer" href=/listing/{{list.size}}>Size: {{ list.size  }}</div>
         <div class="panel-footer" href=/listing/{{list.price}}>Price: ${{ list.price  }}</div>
+        <div class="panel-footer" href=/listing/{{list.user}}>Seller: {{ list.user  }}</div>
+
       </div>
     </div>
 	{% endfor %}
