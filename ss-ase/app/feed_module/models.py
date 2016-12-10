@@ -6,5 +6,6 @@ class Listing(db.Document):
     price = db.StringField(required=True)
     info = db.StringField(required=False)
     filename = db.StringField(required=True)
+    user = db.StringField(required=True)
     def get_title(self):
         return self.title

@@ -26,7 +26,7 @@ class ListingTestCase(unittest.TestCase):
 
 
     def tearDown(self):
-        User.objects.delete()
+        User.objects(username='tester').delete()
 
     def add_listing(self, title, size, price, info, filename, file):
         with app.test_client() as c:
