@@ -74,16 +74,16 @@ a {
 		<h2 style="color:red;">Please fill all required fields.</h2>
 	{% endif %}
 	{% if error==2 %}
-		<h2 style="color:red;">Please make sure price is a number.</h2>
+		<h2 style="color:red;">Please make sure price is a number between {{low}} and {{high}}.</h2>
 	{% endif %}
 	{% if error==3 %}
-		<h2 style="color:red;">Title "{{ title }}" is taken. Please rename your item.</h2>
+		<h2 style="color:red;">Titles may only be words and spaces (with at least 1 word).</h2>
 	{% endif %}
 	{% if error==4 %}
-		<h2 style="color:red;">Please upload a .jpg file.</h2>
+		<h2 style="color:red;">Title "{{ title }}" taken. Please rename your item.</h2>
 	{% endif %}
 	{% if error==5 %}
-		<h2 style="color:red;">Photo name exists in database. Please rename photo.</h2>
+		<h2 style="color:red;">Please upload a .jpg file.</h2>
 	{% endif %}
 {% endif %}
 
