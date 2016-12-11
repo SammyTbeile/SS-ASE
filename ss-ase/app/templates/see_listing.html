@@ -79,6 +79,7 @@
 	  {% if info %}
 			<p>Decription:  {{ item.info }}</p>
 	  {% endif %}
+	  <p>Contact Seller: {{ item.email }} </p>
 	  <img src="{{ s3.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'rags2riches','Key':item.filename}) }}" ></br>
       <hr>
     </div>

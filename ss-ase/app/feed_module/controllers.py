@@ -41,6 +41,7 @@ def list():
         photo = request.files['file']
         filename = title + '.jpg'
         user = current_user.username
+        email = current_user.email
 
         if not title or not size or not price or (photo.filename == ""):
             error = 1 #required fields are not filled
@@ -57,7 +58,7 @@ def list():
 
         else:
             s3.Bucket(BUCKET_NAME).put_object(Key=filename, Body=photo)
-            new_list = Listing(title, size, price, info, filename, user)
+            new_list = Listing(title, size, price, info, filename, user, email)
             new_list.save()
             return render_template("confirm.html", title=title)
     else:
