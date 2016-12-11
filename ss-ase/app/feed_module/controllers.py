@@ -8,6 +8,7 @@ feed_module = Blueprint('start', __name__, url_prefix='/')
 
 AWS_ACCESS_KEY_ID = 'AKIAJWYMQFFTQNTCOGFQ'
 AWS_SECRET_ACCESS_KEY = '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'
+BUCKET_NAME = 'rags2riches'
 
 session = boto3.session.Session(aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 s3 = session.resource('s3')
@@ -55,7 +56,7 @@ def list():
             return render_template("listing.html", error=error, title=title, low=low, high=high)
 
         else:
-            s3.Bucket('rags2riches').put_object(Key=filename, Body=photo)
+            s3.Bucket(BUCKET_NAME).put_object(Key=filename, Body=photo)
             new_list = Listing(title, size, price, info, filename, user)
             new_list.save()
             return render_template("confirm.html", title=title)
@@ -70,10 +71,13 @@ def listing(title):
     return render_template("see_listing.html", item=item[0], s3=s3_client)
 
 @feed_module.route("delete/<title>", methods=["POST"])
+@login_required
 def delete(title):
-	db_item = Listing.objects(title=title)
+	db_item = Listing.objects.get(title=title)
+	s3_key = db_item.filename
+	# delete listing from db and s3 bucket
 	db_item.delete()
-	
+	s3.Object(BUCKET_NAME, s3_key).delete()
 	return redirect(url_for('.feed'))
 
 def isNumber(price):
