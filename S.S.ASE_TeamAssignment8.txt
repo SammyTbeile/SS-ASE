@@ -1,0 +1,24 @@
+﻿Team Assignment #4
+S.S. ASE
+Pair 1:
+* Tessa Hurr trh2124
+* Julia Troxell jst2152
+Pair 2:
+* Sammy Tbeile st2918
+* Natalia Jacobowitz nbj2105
+
+
+Link to GitHub: https://github.com/SammyTbeile/SS-ASE 
+Link to Trello: https://trello.com/b/EGstLvwk/task-management-board-2
+
+
+Human-Executable Script
+* Register a new user
+* Log-in
+* View feed
+* Click on listings, then return to feed
+* Create a new listing (perhaps trying out some invalid listings first), then return to feed
+* Delete the new listing
+* Create another listing
+* Log out
+* Log back in to view that your created listings are still there
