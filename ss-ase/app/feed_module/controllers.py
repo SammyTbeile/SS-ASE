@@ -1,6 +1,6 @@
 import boto3
 from boto.s3.key import Key
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Listing
 
@@ -69,6 +69,13 @@ def listing(title):
     item = Listing.objects(title=title)
     return render_template("see_listing.html", item=item[0], s3=s3_client)
 
+@feed_module.route("delete/<title>", methods=["POST"])
+def delete(title):
+	db_item = Listing.objects(title=title)
+	db_item.delete()
+	
+	return redirect(url_for('.feed'))
+
 def isNumber(price):
     try:
         float(price)
@@ -89,3 +96,5 @@ def isWord(title):
     if (any(x.isalpha() for x in title) and all(x.isalpha() or x.isspace() for x in title)):
         return True
     return False
+
+
