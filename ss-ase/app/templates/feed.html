@@ -56,7 +56,8 @@
         <li><a href="/list">Create a Listing</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/login/logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+        <li><a href="/login/logout"><span class="glyphicon glyphicon-user"></span> Logout <b>{{current_user.username}}</b></a></li>
+		<!--<li><a href="/login/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>-->
       </ul>
     </div>
   </div>
@@ -74,6 +75,12 @@
         <div class="panel-footer" href=/listing/{{list.size}}>Size: {{ list.size  }}</div>
         <div class="panel-footer" href=/listing/{{list.price}}>Price: ${{ list.price  }}</div>
         <div class="panel-footer" href=/listing/{{list.user}}>Seller: {{ list.user  }}</div>
+
+		{% if current_user.username == list.user %}
+		<form method="post" action="{{ url_for('.delete', title=list.title) }}">
+			<button type="submit">Delete</button>
+		</form>
+		{% endif %} 
 
       </div>
     </div>
