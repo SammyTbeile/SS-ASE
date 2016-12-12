@@ -70,8 +70,8 @@
 	{% for list in listings %}
     <div class="col-sm-4">
       <div class="panel panel-primary">
-        <div class="panel-heading"><a href=/listing/{{list.title}}>{{ list.title  }}</a></div>
-        <img src= "{{ s3.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'rags2riches','Key':list.filename}) }}">
+        <div class="panel-heading"><a href="/listing/{{list.title}}">{{ list.title  }}</a></div>
+		<div class="panel-body"><img src="{{ s3.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'rags2riches','Key':list.filename}) }}" class="img-responsive" style="width:200px" alt="Image"></div>
         <div class="panel-footer" href=/listing/{{list.size}}>Size: {{ list.size  }}</div>
         <div class="panel-footer" href=/listing/{{list.price}}>Price: ${{ list.price  }}</div>
         <div class="panel-footer" href=/listing/{{list.user}}>Seller: {{ list.user  }}</div>

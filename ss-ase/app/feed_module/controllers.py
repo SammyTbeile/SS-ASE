@@ -68,8 +68,8 @@ def list():
 @feed_module.route("listing/<title>")
 @login_required
 def listing(title):
-    item = Listing.objects(title=title)
-    return render_template("see_listing.html", item=item[0], s3=s3_client)
+    item = Listing.objects.get(title=title)
+    return render_template("see_listing.html", item=item, s3=s3_client)
 
 @feed_module.route("delete/<title>", methods=["POST"])
 @login_required
