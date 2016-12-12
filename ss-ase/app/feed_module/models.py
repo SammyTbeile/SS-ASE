@@ -7,5 +7,4 @@ class Listing(db.Document):
     info = db.StringField(required=False)
     filename = db.StringField(required=True)
     user = db.StringField(required=True)
-    def get_title(self):
-        return self.title
+    email = db.StringField(required=True)

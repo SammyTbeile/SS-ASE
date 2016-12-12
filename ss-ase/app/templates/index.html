@@ -3,7 +3,59 @@
     <head>
 		<meta charset="utf-8">
 		<title>Welcome</title>
-	</head>
+    <style>
+      #bg {
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+      }
+      #bg img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        min-width: 50%;
+        min-height: 50%;
+        opacity: 0.5;
+        filter: alpha(opacity=50); /* For IE8 and earlier */
+      }
+
+      .container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -moz-transform: translateX(-50%) translateY(-50%);
+          -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+      }
+
+    h1 {
+
+        font-size: 40px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.6);
+        -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+        -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+    </style>
+
+      <div>
+        <div id="bg">
+          <img src="../static/closet.jpg" alt="">
+        </div>
+        <div class="container">
+      		<h1 style="font-family:arial;color:black">Rags2Riches</h1>
+      		<center><a href="/login/signin"><button class="button">Log in</button></a>
+          <a href="/login/register"><button class="button">Register</button></a></center>
+        </div>
+        </div>
+  </head>
 	<body>
-		<h1>Log-in to discover new looks!</h1>
-			<a href="/login/signin"><button>Launch App</button></a>
+
+
+
+  </body>

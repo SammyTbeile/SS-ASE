@@ -74,16 +74,16 @@ a {
 		<h2 style="color:red;">Please fill all required fields.</h2>
 	{% endif %}
 	{% if error==2 %}
-		<h2 style="color:red;">Please make sure price is a number.</h2>
+		<h2 style="color:red;">Please make sure price is a number between {{low}} and {{high}}.</h2>
 	{% endif %}
 	{% if error==3 %}
-		<h2 style="color:red;">Title "{{ title }} is taken. Please rename your item.</h2>
+		<h2 style="color:red;">Titles may only be words and spaces (with at least 1 word).</h2>
 	{% endif %}
 	{% if error==4 %}
-		<h2 style="color:red;">Please upload a .jpg file.</h2>
+		<h2 style="color:red;">Title "{{ title }}" taken. Please rename your item.</h2>
 	{% endif %}
 	{% if error==5 %}
-		<h2 style="color:red;">Photo name exists in database. Please rename photo.</h2>
+		<h2 style="color:red;">Please upload a .jpg file.</h2>
 	{% endif %}
 {% endif %}
 
@@ -92,7 +92,7 @@ a {
   <div class="container">
 
 			<p><b>*Title: <input type="text" name="list_title" required/></b></p>
-		
+
 			<p><b>*Photo (.jpg): <input type="file" name="file" required/></b></p>
 
 			<p><b>*Size: <select name="list_size">
@@ -101,9 +101,10 @@ a {
 				<option value="M">M</option>
 				<option value="L">L</option>
 				<option value="XL">XL</option>
+        		<option value="NA">N/A</option>
 			</select></b></p>
 			<p><b>*Price per Day (in $): <input type="text" name="list_price" required/></b></p>
-			<p>Other Info (optional): <input type="text" placeholder="Brand, Cleaning instructions, Visible stains/rips, etc..." name="list_info" required/><br>
+			<p>Other Info (optional): <input type="text" placeholder="Brand, Cleaning instructions, Visible stains/rips, etc..." name="list_info"/><br>
 			<button type="submit">Create</button>
 		</form>
 		<!--<a href="/feed"><button>Back to Feed</button></a>-->
@@ -118,8 +119,7 @@ a {
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn"><a href="/feed">Cancel</a></button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+    <a href="/feed"><button type="button" class="cancelbtn">Cancel</button></a>
   </div>
 </form>
 
