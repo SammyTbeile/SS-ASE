@@ -21,9 +21,9 @@ def signin():
         except DoesNotExist:
             error = 'Invalid Username or Password'
             return render_template("login/signin.html", form=form, error=error)
-        except ValidationError:
-            error = 'Invalid Username or Password - does not exist'
-            return render_template("login/signin.html", form=form, error=error)
+        # except ValidationError:
+        #     error = 'Invalid Username or Password - does not exist'
+        #     return render_template("login/signin.html", form=form, error=error)
 
     return render_template('login/signin.html', form=form)
 
