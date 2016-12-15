@@ -55,6 +55,38 @@ class LoginTestCase(unittest.TestCase):
             'a')
         assert 'Login' in str(rv.data)
 
+    def test_double_register(self):
+        print("testing double registration")
+        self.register(
+            'tester',
+            'test name',
+            'a@gmail.com',
+            '1234567890',
+            'test building',
+            'a',
+            'a')
+        rv = self.register(
+          'tester',
+          'test name',
+          'a@gmail.com',
+          '1234567890',
+          'test building',
+          'a',
+          'a')
+        assert 'Username is not unique' in str(rv.data)
+
+    def test_invalid_registration(self):
+        print("testing invalid registration")
+        rv = self.register(
+          'tester',
+          'test name',
+          'not an email',
+          '123don\'tcall',
+          'test building',
+          'a',
+          'b')
+        assert 'Invalid registration' in str(rv.data)
+
 
     def test_login(self):
         print("testing login")
@@ -68,6 +100,28 @@ class LoginTestCase(unittest.TestCase):
         print("test logout")
         rv = self.logout()
         assert 'Login' in str(rv.data)
+
+    def test_is_authenticated(self):
+        print("test is_authenticated")
+        user = User(username='tester', password='a', email='a@gmail.com',
+             phone='1234567890', name='a', dorm_building='a',
+             confirm='a').save()
+        result = user.is_authenticated()
+        assert (result == True)
+
+    def test_is_active(self):
+      print("test is_active")
+      user = User(username='tester', password='a', email='a@gmail.com',
+           phone='1234567890', name='a', dorm_building='a',
+           confirm='a').save()
+      assert (user.is_active() == True)
+
+    def test_is_anonymous(self):
+      print("test is_anonymous")
+      user = User(username='tester', password='a', email='a@gmail.com',
+           phone='1234567890', name='a', dorm_building='a',
+           confirm='a').save()
+      assert (user.is_anonymous() == False)
 
 
 

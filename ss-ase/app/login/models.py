@@ -12,7 +12,7 @@ class User(db.Document):
     confirm = db.StringField(required=True)
 
     def is_authenticated(self):
-        users = User.object(username=self.username, password=self.password)
+        users = User.objects(username=self.username, password=self.password)
         return len(users) != 0
     def is_active(self):
         return True

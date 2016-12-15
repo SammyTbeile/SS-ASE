@@ -1,14 +1,15 @@
-Name                                     Stmts   Miss  Cover
-------------------------------------------------------------
-ss-ase/app/__init__.py                      12      0   100%
-ss-ase/app/feed_module/__init__.py           0      0   100%
-ss-ase/app/feed_module/controllers.py       71     40    44%
-ss-ase/app/feed_module/models.py            10      1    90%
-ss-ase/app/login/__init__.py                 0      0   100%
-ss-ase/app/login/controllers.py             40     16    60%
-ss-ase/app/login/forms.py                   14      0   100%
-ss-ase/app/login/models.py                  23      5    78%
-ss-ase/config.py                             6      0   100%
-ss-ase/test_listing.py                      51      0   100%
-------------------------------------------------------------
-TOTAL                                      227     62    73%
+Name                                       Stmts   Miss  Cover
+--------------------------------------------------------------
+ss-ase/app/__init__.py                        12      0   100%
+ss-ase/app/feed_module/__init__.py             0      0   100%
+ss-ase/app/feed_module/controllers.py         80     41    49%
+ss-ase/app/feed_module/models.py               9      0   100%
+ss-ase/app/login/__init__.py                   0      0   100%
+ss-ase/app/login/controllers.py               37      1    97%
+ss-ase/app/login/forms.py                     14      0   100%
+ss-ase/app/login/models.py                    23      1    96%
+ss-ase/config.py                               6      0   100%
+ss-ase/test_listing.py                        77      0   100%
+ss-ase/test_login.py                          58      0   100%
+--------------------------------------------------------------
+TOTAL                                        316     43    86%

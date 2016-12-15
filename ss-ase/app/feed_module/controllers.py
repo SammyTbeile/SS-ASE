@@ -101,5 +101,3 @@ def isWord(title):
     if (any(x.isalpha() for x in title) and all(x.isalpha() or x.isspace() for x in title)):
         return True
     return False
-
-
