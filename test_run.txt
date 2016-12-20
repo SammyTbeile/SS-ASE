@@ -1,0 +1,113 @@
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine is deprecated, use flask_mongoengine instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine.wtf is deprecated, use flask_mongoengine.wtf instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine.wtf.orm is deprecated, use flask_mongoengine.wtf.orm instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine.wtf.fields is deprecated, use flask_mongoengine.wtf.fields instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine.wtf.models is deprecated, use flask_mongoengine.wtf.models instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.wtf is deprecated, use flask_wtf instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine.wtf.base is deprecated, use flask_mongoengine.wtf.base instead.
+  .format(x=modname), ExtDeprecationWarning
+/mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:34: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = RegistrationForm(request.form)
+/mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+/mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:34: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = RegistrationForm(request.form)
+./mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:34: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = RegistrationForm(request.form)
+..../mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+./mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+./mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+./mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:34: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = RegistrationForm(request.form)
+/mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+.
+----------------------------------------------------------------------
+Ran 9 tests in 2.072s
+
+OK
+testing double registration
+testing invalid registration
+test is_active
+test is_anonymous
+test is_authenticated
+testing login
+testing that failed login returns the login page
+test logout
+testing registration
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine is deprecated, use flask_mongoengine instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine.wtf is deprecated, use flask_mongoengine.wtf instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine.wtf.orm is deprecated, use flask_mongoengine.wtf.orm instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine.wtf.fields is deprecated, use flask_mongoengine.wtf.fields instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine.wtf.models is deprecated, use flask_mongoengine.wtf.models instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.wtf is deprecated, use flask_wtf instead.
+  .format(x=modname), ExtDeprecationWarning
+/usr/local/lib/python2.7/dist-packages/flask/exthook.py:71: ExtDeprecationWarning: Importing flask.ext.mongoengine.wtf.base is deprecated, use flask_mongoengine.wtf.base instead.
+  .format(x=modname), ExtDeprecationWarning
+/mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+./mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+/mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+./mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+/mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+./mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+/mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+./mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+./mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+./mnt/c/Users/Sammy/Documents/MEGAsync/Documents/Columbia Junior Year/Advanced Software Engineering/ss-ase/ss-ase/app/login/controllers.py:13: FlaskWTFDeprecationWarning: "flask_wtf.Form" has been renamed to "FlaskForm" and will be removed in 1.0.
+  form = LoginForm(request.form)
+.
+----------------------------------------------------------------------
+Ran 7 tests in 4.727s
+
+OK
+Testing adding a listing with invalid attributes
+Testing adding a listing with valid attributes
+testing getting the feed while authenticated
+testing getting the feed while unauthorized
+testing getting an item
+tetsting getting the listing
+testing getting the index
+Name                                       Stmts   Miss  Cover
+--------------------------------------------------------------
+ss-ase/app/__init__.py                        12      0   100%
+ss-ase/app/feed_module/__init__.py             0      0   100%
+ss-ase/app/feed_module/controllers.py         80     41    49%
+ss-ase/app/feed_module/models.py               9      0   100%
+ss-ase/app/login/__init__.py                   0      0   100%
+ss-ase/app/login/controllers.py               37      1    97%
+ss-ase/app/login/forms.py                     14      0   100%
+ss-ase/app/login/models.py                    23      1    96%
+ss-ase/config.py                               6      0   100%
+ss-ase/test_listing.py                        76      0   100%
+ss-ase/test_login.py                          58      0   100%
+--------------------------------------------------------------
+TOTAL                                        315     43    86%
+[localhost] local: coverage run --rcfile=.coveragerc ./ss-ase/test_login.py
+[localhost] local: coverage run --rcfile=.coveragerc -a ./ss-ase/test_listing.py
+[localhost] local: coverage report > coverage.txt
+[localhost] local: coverage report
+
+Done.
