@@ -9,7 +9,7 @@ ss-ase/app/login/controllers.py               37      1    97%
 ss-ase/app/login/forms.py                     14      0   100%
 ss-ase/app/login/models.py                    23      1    96%
 ss-ase/config.py                               6      0   100%
-ss-ase/test_listing.py                        77      0   100%
+ss-ase/test_listing.py                        76      0   100%
 ss-ase/test_login.py                          58      0   100%
 --------------------------------------------------------------
-TOTAL                                        316     43    86%
+TOTAL                                        315     43    86%

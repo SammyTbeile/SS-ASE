@@ -68,6 +68,7 @@ class ListingTestCase(unittest.TestCase):
     def get_feed(self):
         return self.app.get('/feed', follow_redirects=True)
 
+    # Iteration 1
     def test_add_listing_invalid(self):
         print("Testing adding a listing with invalid attributes")
         rv = self.add_listing_invalid(
@@ -76,9 +77,9 @@ class ListingTestCase(unittest.TestCase):
             price='10',
             info='wash'
             )
-        print(str(rv.data))
         assert '400' in str(rv.status)
 
+    # Iteration 1
     def test_add_listing_valid(self):
         print("Testing adding a listing with valid attributes")
         self.login('tester', 'a')
@@ -99,28 +100,33 @@ class ListingTestCase(unittest.TestCase):
             )
         assert '400' in str(rv.status)
 
+    # Iteration 1
     def test_feed_unauthenticated(self):
         print("testing getting the feed while unauthorized")
         self.app.get("/login/logout", follow_redirects=True)
         rv = self.get_feed()
         assert '401' in str(rv.status)
 
+    # Iteration 1
     def test_feed_authenticated(self):
         print("testing getting the feed while authenticated")
         self.login("z", "a")
         rv = self.get_feed()
         assert '200' in str(rv.status)
 
+    # Post iteration 1
     def test_get_list(self):
       print("tetsting getting the listing")
       rv = self.app.get("/list", follow_redirects=True)
       assert 'Create a Listing' in str(rv.data)
 
+    # Post iteration 1
     def test_index(self):
       print("testing getting the index")
       rv = self.app.get("/", follow_redirects=True);
       assert 'Rags2Riches' in str(rv.data)
 
+    # Post iteration 1
     def test_get_item(self):
       print("testing getting an item")
       rv = self.app.get("/listing/cufflinks")

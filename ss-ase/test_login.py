@@ -38,11 +38,13 @@ class LoginTestCase(unittest.TestCase):
             confirm=confirm
         ), follow_redirects=True)
 
+    # Iteration 1
     def test_login_failure(self):
         print("testing that failed login returns the login page")
         rv = self.login('wrong', 'test')
         assert 'Login' in str(rv.data)
 
+    # Iteration 1
     def test_register(self):
         print("testing registration")
         rv = self.register(
@@ -55,6 +57,7 @@ class LoginTestCase(unittest.TestCase):
             'a')
         assert 'Login' in str(rv.data)
 
+    # Post iteration 1
     def test_double_register(self):
         print("testing double registration")
         self.register(
@@ -75,6 +78,7 @@ class LoginTestCase(unittest.TestCase):
           'a')
         assert 'Username is not unique' in str(rv.data)
 
+    # Iteration 1
     def test_invalid_registration(self):
         print("testing invalid registration")
         rv = self.register(
@@ -87,7 +91,7 @@ class LoginTestCase(unittest.TestCase):
           'b')
         assert 'Invalid registration' in str(rv.data)
 
-
+    # Iteration 1
     def test_login(self):
         print("testing login")
         User(username='tester', password='a', email='a@gmail.com',
@@ -96,11 +100,13 @@ class LoginTestCase(unittest.TestCase):
         rv = self.login('tester', 'a')
         assert 'Feed' in str(rv.data)
 
+    # Iteration 1
     def test_logout(self):
         print("test logout")
         rv = self.logout()
         assert 'Login' in str(rv.data)
 
+    # Post iteration 1
     def test_is_authenticated(self):
         print("test is_authenticated")
         user = User(username='tester', password='a', email='a@gmail.com',
@@ -109,6 +115,7 @@ class LoginTestCase(unittest.TestCase):
         result = user.is_authenticated()
         assert (result == True)
 
+    # Post iteration 1
     def test_is_active(self):
       print("test is_active")
       user = User(username='tester', password='a', email='a@gmail.com',
@@ -116,6 +123,7 @@ class LoginTestCase(unittest.TestCase):
            confirm='a').save()
       assert (user.is_active() == True)
 
+    # Post iteration 1
     def test_is_anonymous(self):
       print("test is_anonymous")
       user = User(username='tester', password='a', email='a@gmail.com',

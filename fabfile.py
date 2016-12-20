@@ -17,4 +17,4 @@ def test():
     local("coverage run --rcfile=.coveragerc ./ss-ase/test_login.py")
     local("coverage run --rcfile=.coveragerc -a ./ss-ase/test_listing.py")
     local("coverage report > coverage.txt")
-    local("coverage report -m")
+    local("coverage report")
